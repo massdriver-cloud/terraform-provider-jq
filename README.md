@@ -1,6 +1,6 @@
 # Terraform Provider for jq
 
-This plugin brings the power of [jq](https://stedolan.github.io/jq/) to HCL, allowing you to parse and extract complex data from JSON or even HCL objects.
+This plugin brings the power of [jq](https://stedolan.github.io/jq/) to Terraform, allowing you to parse and extract complex data from JSON or even HCL objects.
 
 ## Usage
 
