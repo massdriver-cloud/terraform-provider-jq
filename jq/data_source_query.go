@@ -40,7 +40,10 @@ func dataSourceQueryRead(ctx context.Context, d *schema.ResourceData, m interfac
 
 	query, _ := jq.Parse(d.Get("query").(string))
 	data := []byte(d.Get("data").(string))
-	result, _ := query.Apply(data)
+	result, err := query.Apply(data)
+	if err != nil {
+		return diag.FromErr(err)
+	}
 
 	if err := d.Set("result", string(result)); err != nil {
 		return diag.FromErr(err)
