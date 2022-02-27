@@ -13,6 +13,7 @@ import (
 
 func dataSourceQuery() *schema.Resource {
 	return &schema.Resource{
+		Description: "Use this data source to execute a jq query against a JSON formatted string.",
 		ReadContext: dataSourceQueryRead,
 		Schema: map[string]*schema.Schema{
 			"data": {
@@ -27,7 +28,7 @@ func dataSourceQuery() *schema.Resource {
 			},
 			"result": {
 				Type:        schema.TypeString,
-				Description: "A JSON formatted string containing the result of the query",
+				Description: "A JSON formatted string containing the result of the query.",
 				Computed:    true,
 			},
 		},
