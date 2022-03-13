@@ -40,13 +40,6 @@ func dataSourceQueryRead(ctx context.Context, d *schema.ResourceData, m interfac
 	// Warning or errors can be collected in a slice type
 	var diags diag.Diagnostics
 
-	// query, _ := jq.Parse(d.Get("query").(string))
-	// data := []byte(d.Get("data").(string))
-	// result, err := query.Apply(data)
-	// if err != nil {
-	// 	return diag.FromErr(err)
-	// }
-
 	result := ""
 	var data interface{}
 	var iter gojq.Iter
