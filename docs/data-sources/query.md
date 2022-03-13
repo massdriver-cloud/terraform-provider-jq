@@ -55,7 +55,7 @@ example = "b"
 
 ### Multiple Results
 
-Some jq queries will produce multiple elements. In this case, the result will have multiple lines, with each line containing an element as a JSON encoded string. Keep in mind, this means that the result **cannot** be converted to HCL with `jsondecode()` as the string itself is not valid JSON.
+Some jq queries will produce multiple elements. In this case, the result will have multiple lines, with each line containing an element as a JSON encoded string. Keep in mind this means that the result **cannot** be converted to HCL with `jsondecode()` as the string itself is not valid JSON.
 
 ```hcl
 data "jq_query" "example" {
@@ -78,6 +78,8 @@ example = <<EOT
 3
 EOT
 ```
+
+Be sure to write your queries so they return a single element if you wish to convert them back to HCL with `jsondecode()`.
 
 ## Argument Reference
 
