@@ -17,7 +17,7 @@ func TestAccQueryBasic(t *testing.T) {
 		{
 			data:   `{\"a\":\"foo\"}`,
 			query:  `.a`,
-			result: "\"foo\"",
+			result: `"foo"`,
 		},
 		{
 			data:   `{\"b\":1}`,
@@ -25,9 +25,31 @@ func TestAccQueryBasic(t *testing.T) {
 			result: "1",
 		},
 		{
+			data:   `{\"a\":1,\"b\":2}`,
+			query:  `.a += 1 | .b *= 2`,
+			result: "{\"a\":2,\"b\":4}",
+		},
+		{
+			data:  `[{\"id\":1},{\"id\":2},{\"id\":3}]`,
+			query: `.[] | .id`,
+			result: `1
+2
+3`,
+		},
+		{
+			data:   `[{\"id\":1},{\"id\":2},{\"id\":3}]`,
+			query:  `[.[].id]`,
+			result: `[1,2,3]`,
+		},
+		{
+			data:   `{\"a\":{\"z\":{\"foo\":\"bar\"}},\"b\":{\"x\":[9]},\"c\":{\"z\":{\"hello\":\"world\"}}}`,
+			query:  `[ .[].z | select( . != null )]`,
+			result: `[{"foo":"bar"},{"hello":"world"}]`,
+		},
+		{
 			data:   `{\"c\":[\"foo\", \"bar\", \"baz\"]}`,
-			query:  `.c.[1:2]`,
-			result: "[\"bar\", \"baz\"]",
+			query:  `.c.[1:3]`,
+			result: "[\"bar\",\"baz\"]",
 		},
 	}
 
