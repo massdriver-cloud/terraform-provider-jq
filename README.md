@@ -6,7 +6,7 @@ This plugin brings the power of [jq](https://stedolan.github.io/jq/) to Terrafor
 
 No initialiation is required, you can begin using the provider immediately.
 
-```
+```hcl
 data "jq_query" "example" {
     data = "{\"a\": \"b\"}"
     query = ".a"
@@ -30,7 +30,7 @@ The jq operates on json formatted strings. Fortunately, terraform provides the `
 
 The above example in pure HCL:
 
-```
+```hcl
 data "jq_query" "example" {
     data = jsonencode({a = "b"})
     query = ".a"
