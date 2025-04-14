@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     jq = {
-      version = "0.1"
+      version = "0.2.1"
       source  = "massdriver-cloud/jq"
     }
   }
